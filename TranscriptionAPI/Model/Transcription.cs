@@ -1,4 +1,4 @@
-namespace TranscriptionAPI
+namespace TranscriptionAPI.Model
 {
     public class Transcription
     {
@@ -6,11 +6,10 @@ namespace TranscriptionAPI
 
         public List<TranscriptionData> TranscriptionLines { get; set; } = new List<TranscriptionData>();
     }
-
     public class TranscriptionData
     {
         public int StartSeconds { get; set; }
         public int EndSeconds { get; set; }
-        public string Transcript { get; set; } = String.Empty;
+        public string Transcript { get; set; } = string.Empty;
     }
 }
