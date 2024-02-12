@@ -1,6 +1,6 @@
 @TranscriptionAPI_HostAddress = http://localhost:5207
 
-GET {{TranscriptionAPI_HostAddress}}/weatherforecast/
+GET {{TranscriptionAPI_HostAddress}}/TranscripzionAPI/
 Accept: application/json
 
 ###
