@@ -1,37 +1,40 @@
-﻿using TranscriptionAPI.Modul;
+﻿using System;
+using System.Collections.Generic;
+using TranscriptionAPI.Modul;
 
 namespace TranscriptionAPI.Services
 {
     public class TranscriptionService : ITranscriptionService
     {
-        public Transcription GetTranscriptionFromYoutubeURL(string youtubeURL)
+        public string GetTranscriptionTextWithTimestampsFromYoutubeURL(string youtubeURL)
         {
-            // 1. Take YoutubeURL and extract audio from Youtube with OpenCV
+            byte[] audioBytes = ExtractAudioFromYoutube(youtubeURL);
+            string transcript = TranscribeAudio(audioBytes);
+            string transcriptionWithTimestamps = AddTimestampsToTranscription(transcript);
+            return transcriptionWithTimestamps;
+        }
 
-            // 2. Use OpenAI's Whisper language model to transcript the video (async)
+        private byte[] ExtractAudioFromYoutube(string youtubeURL)
+        {
+            // Hier die Logik einfügen, um Audio von YouTube zu extrahieren
+            return new byte[0]; // Platzhalter für die extrahierten Audio-Daten
+        }
 
-            // 2.5 Optional Translate
+        private string TranscribeAudio(byte[] audioBytes)
+        {
+            // Hier die Logik einfügen, um das Audio zu transkribieren
+            return "Transcribed text"; // Platzhalter für den transkribierten Text
+        }
 
-            // 3. Return Transcription
-
-            Transcription model = new Transcription()
-            {
-                Date = DateTime.Now,
-                TranscriptionLines = new List<TranscriptionData>
-                {
-                    new TranscriptionData() { StartSeconds = 0, EndSeconds = 2, Transcript = "Lorem ipsum dolor sit amet, consetetur sad" },
-                    new TranscriptionData() { StartSeconds = 2, EndSeconds = 5, Transcript = "cusam et justo duo dolores et ea rebum. Stet clita kasd" },
-                    new TranscriptionData() { StartSeconds = 5, EndSeconds = 2, Transcript = "dolor sit amet. Lorem ipsum dolor sit am" },
-                    new TranscriptionData() { StartSeconds = 0, EndSeconds = 8, Transcript = " erat, sed diam voluptua. At vero e" }
-                }
-            };
-
-            return model;
+        private string AddTimestampsToTranscription(string transcript)
+        {
+            // Hier die Logik einfügen, um Zeitstempel zum Transkriptionstext hinzuzufügen
+            return "Transcription with timestamps"; // Platzhalter für den Transkriptionstext mit Zeitstempeln
         }
     }
 
     public interface ITranscriptionService
     {
-        Transcription GetTranscriptionFromYoutubeURL(string youtubeURL);
+        string GetTranscriptionTextWithTimestampsFromYoutubeURL(string youtubeURL);
     }
 }
