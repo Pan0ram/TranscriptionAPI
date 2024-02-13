@@ -1,6 +1,6 @@
-using TranscriptionAPI;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using TranscriptionAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

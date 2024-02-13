@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+using TranscriptionAPI.Modul;
+using TranscriptionAPI.Services;
 
 namespace TranscriptionAPI.Controllers
 {

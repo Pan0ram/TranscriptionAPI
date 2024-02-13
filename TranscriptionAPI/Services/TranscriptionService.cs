@@ -1,4 +1,6 @@
-﻿namespace TranscriptionAPI
+﻿using TranscriptionAPI.Modul;
+
+namespace TranscriptionAPI.Services
 {
     public class TranscriptionService : ITranscriptionService
     {
@@ -15,8 +17,8 @@
             Transcription model = new Transcription()
             {
                 Date = DateTime.Now,
-                TranscriptionLines = new List<TranscriptionData> 
-                { 
+                TranscriptionLines = new List<TranscriptionData>
+                {
                     new TranscriptionData() { StartSeconds = 0, EndSeconds = 2, Transcript = "Lorem ipsum dolor sit amet, consetetur sad" },
                     new TranscriptionData() { StartSeconds = 2, EndSeconds = 5, Transcript = "cusam et justo duo dolores et ea rebum. Stet clita kasd" },
                     new TranscriptionData() { StartSeconds = 5, EndSeconds = 2, Transcript = "dolor sit amet. Lorem ipsum dolor sit am" },
