@@ -1,6 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using TranscriptionAPI.Modul;
-using TranscriptionAPI.Services;
 
 namespace TranscriptionAPI.Controllers
 {
@@ -17,7 +15,6 @@ namespace TranscriptionAPI.Controllers
             _logger = logger;
             _transcriptionService = transcriptionService;
         }
-
         [HttpGet(Name = "GetTranscription")]
         public Transcription Get(string youtubeURL)
         {

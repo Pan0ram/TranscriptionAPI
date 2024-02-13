@@ -1,4 +1,4 @@
-namespace TranscriptionAPI.Modul
+﻿namespace TranscriptionAPI
 {
     public class Transcription
     {
@@ -11,6 +11,6 @@ namespace TranscriptionAPI.Modul
     {
         public int StartSeconds { get; set; }
         public int EndSeconds { get; set; }
-        public string Transcript { get; set; } = string.Empty;
+        public string Transcript { get; set; } = String.Empty;
     }
 }
