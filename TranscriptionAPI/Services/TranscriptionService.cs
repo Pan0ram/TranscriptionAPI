@@ -1,4 +1,5 @@
-﻿using IronPython.Hosting;
+﻿using FFmpeg.NET;
+using Whisper;
 
 namespace TranscriptionAPI
 {
@@ -28,21 +29,5 @@ namespace TranscriptionAPI
 
             return model;
         }
-    }
-
-    public class dynamic_demo
-    {
-        public void RunPythonScript()
-        {
-            var ipy = Python.CreateRuntime();
-            dynamic test = ipy.UseFile("main.py");
-            test.Simple();
-        }
-    }
-
-   public interface ITranscriptionService
-    {
-        Transcription GetTranscriptionFromYoutubeURL(string youtubeURL);
-        string GetTranscriptionTextWithTimestampsFromYoutubeURL(string youtubeURL);
     }
 }
