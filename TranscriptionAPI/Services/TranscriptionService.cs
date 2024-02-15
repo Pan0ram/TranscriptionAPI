@@ -1,4 +1,7 @@
 ﻿using FFmpeg.NET;
+using FFmpeg.NET.Enums;
+using System;
+using System.IO;
 using Whisper;
 
 namespace TranscriptionAPI
@@ -7,7 +10,17 @@ namespace TranscriptionAPI
     {
     public Transcription GetTranscriptionFromYoutubeURL(string youtubeURL)
      {
-            //1. Take YoutubeURL and extract audio from Youtube with OpenCV
+            //1. Take YoutubeURL and extract audio from Youtube with ffmpg.net
+            string audioFileName = "audio.mp3";                                                                                 // Pfad zum heruntergeladenen Audio relativ zum übergeordneten Verzeichnis
+            string outputPath = Path.Combine(Directory.GetParent(youtubeURL).FullName, audioFileName);                            
+            var ffmpeg = new Engine("ffmpeg\\bin\\ffmpeg.exe");                                                                 // Konfigurieren FFmpeg.NET
+            var inputPath = youtubeURL;                                                                                         // Hier sollte der YouTube-URL stehen
+            var outputFileInfo = new FileInfo(outputPath);                                                                      // Erstellen Sie den Eingabe- und Ausgabepfad
+            var conversion = ffmpeg.Convert(inputPath, outputFileInfo);                                                         // Extrahiert die Audio Datei
+            conversion.AddStreamSpecifier(new StreamSpecifier(StreamType.Audio));
+            conversion.SetOutput(outputFileInfo)
+                conversion.Start();                                                                                             // Starten Sie die Konvertierung
+                conversion.Wait();                                                                                              // Warten Sie auf den Abschluss
 
             //2. Use OpenAI's Whisper language model to transcript the video (async)
 
@@ -15,7 +28,7 @@ namespace TranscriptionAPI
 
             //3. Return Transcription
 
-           Transcription model = new Transcription()
+            Transcription model = new Transcription()
             {
                 Date = DateTime.Now,
                 TranscriptionLines = new List<TranscriptionData>
@@ -27,7 +40,7 @@ namespace TranscriptionAPI
                 }
             };
 
-            return model;
+            return outputFileInfo.FullName;
         }
     }
 }
