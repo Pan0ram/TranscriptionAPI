@@ -8,19 +8,36 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Output\**" />
+    <Content Remove="Output\**" />
+    <EmbeddedResource Remove="Output\**" />
+    <None Remove="Output\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ggml-base.bin" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="IronPython" Version="3.4.1" />
     <PackageReference Include="IronPython.StdLib" Version="3.4.1" />
+    <PackageReference Include="NAudio" Version="2.2.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
     <PackageReference Include="Whisper.net" Version="1.5.0" />
     <PackageReference Include="Whisper.net.Runtime" Version="1.5.0" />
     <PackageReference Include="xFFmpeg.NET" Version="7.2.0" />
+    <PackageReference Include="YoutubeExplode" Version="6.3.12" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="ffmpeg\" />
     <Folder Include="PythonScript\" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="ffmpeg\bin\ffmpeg.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="PythonScript\main.py">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

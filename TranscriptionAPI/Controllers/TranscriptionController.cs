@@ -15,10 +15,11 @@ namespace TranscriptionAPI.Controllers
             _logger = logger;
             _transcriptionService = transcriptionService;
         }
+
         [HttpGet(Name = "GetTranscription")]
-        public Transcription Get(string youtubeURL)
+        public async Task<Transcription> Get(string youtubeURL)
         {
-            var result = _transcriptionService.GetTranscriptionFromYoutubeURL(youtubeURL);
+            var result = await _transcriptionService.GetTranscriptionFromYoutubeURL(youtubeURL);
             return result;
         }
     }

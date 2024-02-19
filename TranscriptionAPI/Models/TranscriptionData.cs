@@ -2,8 +2,8 @@
 {
     public class TranscriptionData
     {
-        public int StartSeconds { get; set; }
-        public int EndSeconds { get; set; }
+        public TimeSpan StartSeconds { get; set; }
+        public TimeSpan EndSeconds { get; set; }
         public string Transcript { get; set; } = String.Empty;
     }
 }

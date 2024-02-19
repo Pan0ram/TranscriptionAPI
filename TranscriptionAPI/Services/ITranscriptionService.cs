@@ -2,6 +2,6 @@
 {
     public interface ITranscriptionService
     {
-        Transcription GetTranscriptionFromYoutubeURL(string youtubeURL);
+        Task<Transcription> GetTranscriptionFromYoutubeURL(string youtubeURL);
     }
 }
