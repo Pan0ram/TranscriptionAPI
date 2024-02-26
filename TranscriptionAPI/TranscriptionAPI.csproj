@@ -31,14 +31,10 @@
 
   <ItemGroup>
     <Folder Include="ffmpeg\" />
-    <Folder Include="PythonScript\" />
   </ItemGroup>
 
   <ItemGroup>
     <None Update="ffmpeg\bin\ffmpeg.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="PythonScript\main.py">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
